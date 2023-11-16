@@ -1,5 +1,6 @@
 ---
-
+import LogStreamer from '../components/LogStreamer.astro';
+import { Text } from '@semcore/ui/typography';
 ---
 
 <html lang="en">
@@ -11,6 +12,17 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>AstroBoard ✨👩‍🚀</h1>
+		<LogStreamer>
 	</body>
 </html>
+
+<style>
+html {
+	background-color: #111;
+	display: flex-box;
+	flex-direction: column;
+	text-align: center;
+	color: white;
+}
+</style>

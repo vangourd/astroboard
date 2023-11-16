@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@semcore/ui": "^15.35.1"
+  }
+}
