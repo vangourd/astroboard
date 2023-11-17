@@ -1,16 +1,19 @@
-use actix::prelude::*;
-use actix_web::{web,get, HttpResponse, HttpRequest};
-use log::{debug, error, log_enabled, info, Level};
+use actix::{Actor, StreamHandler};
+use actix_web::{web, App, Error, HttpRequest, HttpResponse, HttpServer};
 use actix_web_actors::ws;
 
-/// Define our WebSocket actor
+/// Define HTTP actor
 struct MyWs;
 
 impl Actor for MyWs {
     type Context = ws::WebsocketContext<Self>;
+
+    fn started(&mut self, ctx: &mut Self::Context) {
+        ctx.text("Hell World!");
+    }
 }
 
-/// Handler for ws::Message messages
+/// Handler for ws::Message message
 impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
     fn handle(&mut self, msg: Result<ws::Message, ws::ProtocolError>, ctx: &mut Self::Context) {
         match msg {
@@ -22,8 +25,8 @@ impl StreamHandler<Result<ws::Message, ws::ProtocolError>> for MyWs {
     }
 }
 
-#[get("/ws")]
-pub async fn ws_index(r: HttpRequest, stream: web::Payload) -> Result<HttpResponse, actix_web::Error> {
-    println!("Incoming websocket connection: {:?}", r);
-    ws::start(MyWs {}, &r, stream)
+pub async fn index(req: HttpRequest, stream: web::Payload) -> Result<HttpResponse, Error> {
+    let resp = ws::start(MyWs {}, &req, stream);
+    println!("{:?}", resp);
+    resp
 }
