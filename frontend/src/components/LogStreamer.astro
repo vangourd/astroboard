@@ -2,10 +2,24 @@
 import "@fontsource/cascadia-code";
 ---
 <div class="log-container">
-    ...
+    <div class="loader"></div>
 </div>
 
 <style>
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3); /* Light grey border */
+  border-top: 4px solid #ffffff; /* White top border for spinner */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .log-container {
     background-color: #111; /* Dark blue reminiscent of deep space */
     color: #c0c0c8; /* Light grey for high contrast text */
