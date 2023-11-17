@@ -1,0 +1,44 @@
+---
+const { title } = Astro.props;
+---
+<button>
+    <slot />
+</button>
+<style>
+button {
+  background-color: transparent;
+  border: 1px solid #fff; /* White border */
+  color: #fff; /* White text */
+  padding: 10px 20px;
+  font-family: 'Cascadia Code', sans-serif; /* Similar to futuristic fonts */
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  margin: 10px;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+button:hover::before {
+  width: 100%;
+}
+
+button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+</style>

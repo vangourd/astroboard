@@ -1,5 +1,37 @@
 ---
+import "@fontsource/cascadia-code";
 ---
-<div>
-Empty log stream box
+<div class="log-container">
+    ...
 </div>
+
+<style>
+.log-container {
+    background-color: #111; /* Dark blue reminiscent of deep space */
+    color: #c0c0c8; /* Light grey for high contrast text */
+    border: 2px solid #f4f4f8; /* Light border */
+    padding: 20px;
+    margin: 20px;
+    overflow-y: auto; /* Allow scrolling */
+    font-family: 'Cascadia Code'; /* Monospace font for that tech feel */
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.2); /* Soft white glow */
+}
+
+/* Style for warning log entries */
+.warning {
+    color: #ffae00; /* Orange color for warnings */
+}
+
+/* Style for error log entries */
+.error {
+    color: #ff4f4f; /* Red color for errors */
+}
+
+/* Style for info log entries */
+.info {
+    color: #4fafff; /* Light blue for informational messages */
+}
+
+</style>
