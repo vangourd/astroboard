@@ -11,7 +11,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
+    "@fontsource/aleo": "^5.0.18",
+    "@fontsource/cascadia-code": "^4.2.1",
     "astro": "^3.5.5",
     "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

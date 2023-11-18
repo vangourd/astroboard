@@ -8,7 +8,7 @@ RUN cargo build --release
 FROM node:18.14.1 as node-builder
 WORKDIR /usr/src/frontend
 COPY ./frontend /usr/src/frontend
-RUN npm install
+RUN npm install --production
 RUN npm run astro build
 
 # Stage 3: Final stage
