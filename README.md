@@ -1,53 +1,38 @@
 # Astroboard Project Setup
 
-This guide details how to run the backend and frontend of the Astroboard project, optimized for environments like VSCode where tmux might interfere with port forwarding.
+This guide details how to run the frontend of the Astroboard project using a shell script. The backend should be run separately in a shell to ensure compatibility with VSCode's features like port forwarding.
 
 ## Prerequisites
 
-- Ensure you have `cargo` for Rust and `npm` for Node.js installed.
+- Ensure you have `npm` for Node.js installed.
+- The backend requires Rust's `cargo`, but it should be run directly in the shell.
 
-## Running the Backend
+## Using the Shell Script for the Frontend
 
-1. **Navigate to the Backend Directory:**
-   Open a terminal or command line interface and navigate to the backend directory.
+1. **Save the Shell Script:**
+   Save the provided shell script in the root directory of your project. You might name it `run_astroboard.sh`.
 
-   ```
-   cd backend/
-   ```
+2. **Make the Script Executable:**
+   Change the script's permissions to make it executable.
 
-2. **Build the Backend:**
-   Use Cargo to build the backend components.
-
-   ```
-   cargo build
+   ```bash
+   chmod +x run_astroboard.sh
    ```
 
-3. **Start Watching for Changes:**
-   To automatically rebuild on changes, use `cargo watch`.
+3. **Run the Frontend:**
+   Execute the script with the `--frontend` flag to start the frontend part of the project.
 
-   ```
-   cargo watch -q
-   ```
-
-## Running the Frontend
-
-1. **Navigate to the Frontend Directory:**
-   Open a new terminal or command line interface and navigate to the frontend directory.
-
-   ```
-   cd frontend/
+   ```bash
+   ./run_astroboard.sh --frontend
    ```
 
-2. **Install Dependencies:**
-   Install the necessary npm packages.
+## Running the Backend Separately
 
-   ```
-   npm install
-   ```
+Due to compatibility issues with VSCode, the backend should be run directly in the shell. This ensures that features like port forwarding work correctly.
 
-3. **Start the Frontend:**
-   Use `nodemon` to watch for changes in the `src` directory and execute `npm run astro build`.
+- Navigate to the backend directory and use `cargo run`:
 
-   ```
-   nodemon -w src/ --exec npm run astro build
-   ```
+  ```bash
+  cd backend/
+  cargo run
+  ```
